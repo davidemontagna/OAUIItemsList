@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ItemResponse: Decodable {
+struct Item: Decodable {
     var id: Int
     var name: String
-    var type: TypeResponse?
+    var type: Type?
     var typeId: Int
-    var owner: EmployeeResponse?
+    var owner: Employee?
     var ownerId: Int?
-    var place: PlaceResponse?
+    var place: Place?
     var placeId: Int?
     var lastAssignedDate: String?
     var date: Date?

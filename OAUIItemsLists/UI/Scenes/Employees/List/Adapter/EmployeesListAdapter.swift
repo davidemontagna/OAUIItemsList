@@ -8,11 +8,25 @@
 import Foundation
 import UIKit
 
+protocol EmployeesListAdapterDelegate {
+    
+}
+
 class EmployeesListAdapter: NSObject {
+    
+    // MARK: - Delegate
+    
+    var delegate: EmployeesListAdapterDelegate?
     
     // MARK: - Properties
     
     var uiitems: [EmployeesListCellUIItem] = []
+    
+    // MARK: - Adapter Lifecycle
+    
+    init(delegate: EmployeesListAdapterDelegate) {
+        self.delegate = delegate
+    }
 }
 
 // MARK: - Extensions
@@ -24,7 +38,7 @@ extension EmployeesListAdapter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: EmployeesListCell = tableView.dequeueReusableCell(for: EmployeesListCell.self, for: indexPath)
-        cell.conf(with: uiitems[indexPath.row])
+        cell.conf(employee: uiitems[indexPath.row])
         return cell
     }
 }

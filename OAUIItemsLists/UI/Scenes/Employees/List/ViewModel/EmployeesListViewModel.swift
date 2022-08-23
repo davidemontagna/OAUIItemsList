@@ -21,7 +21,7 @@ class EmployeesListViewModel: NSObject {
     
     // MARK: - Properties
     
-    var employeesResponse: [EmployeeResponse] = []
+    var employeesResponse: [Employee] = []
     var uiitems: [EmployeesListCellUIItem] {
         return employeesResponse.map { i in
             if let name = i.name {
@@ -40,12 +40,13 @@ class EmployeesListViewModel: NSObject {
     // MARK: - Public methods
     
     func getEmployees() {
-        AF.request("https:/$()/over-inventory-dev.azurewebsites.net/api/").responseDecodable(of: EmployeeResponse.self) { response in
+        AF.request("https://over-inventory.azurewebsites.net/api/Users").responseDecodable(of: EmployeesResponse.self) { response in
+            print([response])
             switch response.result {
             case .failure(let error):
                 self.delegate?.onFailure(error: error.localizedDescription)
             case .success(let response):
-                self.employeesResponse = [response]
+                self.employeesResponse = response
                 self.delegate?.onSuccess(.getEmployees)
             }
         }

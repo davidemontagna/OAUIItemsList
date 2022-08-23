@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EmployeeResponse: Decodable {
+struct Employee: Decodable {
     var id: Int
     var name: String?
     var role: String?

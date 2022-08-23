@@ -15,7 +15,7 @@ class EmployeesListViewController: UIViewController {
     
     // MARK: - Adapter
     
-    lazy var adapter = EmployeesListAdapter()
+    lazy var adapter = EmployeesListAdapter(delegate: self)
     
     // MARK: - ViewModel
     
@@ -33,6 +33,8 @@ class EmployeesListViewController: UIViewController {
         viewModel.getEmployees()
     }
 }
+
+// MARK: - Extensions
 
 extension EmployeesListViewController: EmployeesListViewModelDelegate {
     func onSuccess(_ type: EmployeesListViewModelUseCases) {
@@ -59,4 +61,8 @@ extension EmployeesListViewController: EmployeesListViewModelDelegate {
             present(alert, animated: true, completion: nil)
         }
     }
+}
+
+extension EmployeesListViewController: EmployeesListAdapterDelegate {
+    
 }

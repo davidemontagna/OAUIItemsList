@@ -21,7 +21,7 @@ class ItemsListCell: UITableViewCell {
     
     // MARK: - Public methods
     
-    func conf(with item: ItemsListCellUIItem) {
+    func conf(item: ItemsListCellUIItem) {
         nameLabel.text = item.name
     }
 }

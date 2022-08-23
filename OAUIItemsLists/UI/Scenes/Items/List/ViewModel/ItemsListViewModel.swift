@@ -21,7 +21,7 @@ class ItemsListViewModel: NSObject {
     
     // MARK: - Properties
     
-    var itemsResponse: [ItemResponse] = []
+    var itemsResponse: [Item] = []
     var uiitems: [ItemsListCellUIItem] {
         return itemsResponse.map { i in
             return ItemsListCellUIItem(name: i.name)
@@ -37,12 +37,12 @@ class ItemsListViewModel: NSObject {
     // MARK: - Public methods
     
     func getItems() {
-        AF.request("https:/$()/over-inventory-dev.azurewebsites.net/api/").responseDecodable(of: ItemResponse.self) { response in
+        AF.request("https://over-inventory.azurewebsites.net/api/Devices").responseDecodable(of: ItemsResponse.self) { response in
             switch response.result {
             case .failure(let error):
                 self.delegate?.onFailure(error: error.localizedDescription)
             case .success(let response):
-                self.itemsResponse = [response]
+                self.itemsResponse = response
                 self.delegate?.onSuccess(.getItems)
             }
         }

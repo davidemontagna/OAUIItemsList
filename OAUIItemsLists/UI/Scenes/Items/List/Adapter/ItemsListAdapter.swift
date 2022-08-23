@@ -24,7 +24,7 @@ extension ItemsListAdapter: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: ItemsListCell = tableView.dequeueReusableCell(for: ItemsListCell.self, for: indexPath)
-        cell.conf(with: uiitems[indexPath.row])
+        cell.conf(item: uiitems[indexPath.row])
         return cell
     }
 }

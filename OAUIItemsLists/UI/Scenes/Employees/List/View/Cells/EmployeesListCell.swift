@@ -21,8 +21,7 @@ class EmployeesListCell: UITableViewCell {
 
     // MARK: - Public methods
     
-    func conf(with employee: EmployeesListCellUIItem) {
+    func conf(employee: EmployeesListCellUIItem) {
         nameLabel.text = employee.name
-    }
-    
+    }    
 }
